@@ -31,7 +31,7 @@ class EthBalance:
         This script fetch Ethereum addresses balance using etherscan.io API
         """)
         parser.add_argument('-F', '--file', help = "Path of the stored Ethereum addresses", required = True)
-        parser.add_argument('-O', '--out', help = "Output file name")
+        parser.add_argument('-O', '--out', help = "Output file name", required = True)
 
         arguments = parser.parse_args()
         self.in_file, self.out_file = arguments.file, arguments.out
@@ -42,7 +42,7 @@ class EthBalance:
         try:
             url = self.explorer + address + "&tag=latest&apikey=" + self.API_TOKEN
             request = Request(url, headers= {'User-Agent' :\
-             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36"})
+             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36"})
             response = urlopen(request)
             data = loads(response.read().decode("utf8"))
 
